@@ -35,6 +35,19 @@ osrm.table({coordinates}, (err, response) => {
   console.log(response.destinations); // array of Waypoint objects
 });
 
+osrm.table({coordinates, annotations: ['duration', 'distance']}, (err, response) => {
+  console.log(response.durations); // array of arrays, matrix in row-major order
+  console.log(response.distances); // array of arrays, matrix in row-major order
+  console.log(response.sources); // array of Waypoint objects
+  console.log(response.destinations); // array of Waypoint objects
+});
+
+osrm.table({coordinates, approaches: 'curb'}, (err, response) => {
+  console.log(response.durations); // array of arrays, matrix in row-major order
+  console.log(response.sources); // array of Waypoint objects
+  console.log(response.destinations); // array of Waypoint objects
+});
+
 // Tile
 osrm.tile([0, 0, 0], (err, response) => {
   if (err) throw err;
